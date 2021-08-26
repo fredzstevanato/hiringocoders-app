@@ -1,6 +1,5 @@
-import React from 'react';
-//import { ColossusContext } from 'colossus';
-
+import React from 'react'
+// import { ColossusContext } from 'colossus';
 
 const HelloWorld: StorefrontFunctionComponent = () => {
   return (
