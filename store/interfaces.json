@@ -1,0 +1,11 @@
+{
+  "landingpageregister": {
+    "component": "HelloWorld"
+  },
+  "capture-data": {
+    "component": "CaptureData"
+  },
+  "obter-data": {
+    "component": "ObterData"
+  }
+}
