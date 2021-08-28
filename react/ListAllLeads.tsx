@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
 import api from './service/api'
 
 interface LeadProps {
@@ -14,20 +13,18 @@ interface Leads {
   lead: LeadProps[]
 }
 
-const ObterData: StorefrontFunctionComponent = () => {
+const ListAllLeads: StorefrontFunctionComponent = () => {
   const [leads, setLeads] = useState<LeadProps[]>()
 
   useEffect(() => {
-    getData()
+    async function getLeads() {
+      const all = await api.get('/lead').then((response) => response.data.body)
+      const parsedLeads = all.map((item: Leads) => item.lead) as LeadProps[]
+      setLeads(parsedLeads)
+    }
+
+    getLeads()
   }, [])
-
-  async function getData() {
-    const all = await api.get('/lead').then((response) => response.data.body)
-
-    const parsedLeads = all.map((item: Leads) => item.lead) as LeadProps[]
-
-    setLeads(parsedLeads)
-  }
 
   return (
     <div>
@@ -45,4 +42,4 @@ const ObterData: StorefrontFunctionComponent = () => {
   )
 }
 
-export default ObterData
+export default ListAllLeads
