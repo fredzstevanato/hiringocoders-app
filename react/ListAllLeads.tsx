@@ -26,6 +26,8 @@ const ListAllLeads: StorefrontFunctionComponent = () => {
     getLeads()
   }, [])
 
+
+
   return (
     <div>
       {leads?.map((item) => {

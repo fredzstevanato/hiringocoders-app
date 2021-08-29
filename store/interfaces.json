@@ -1,11 +1,11 @@
 {
-  "landingpageregister": {
-    "component": "HelloWorld"
+  "update-data": {
+    "component": "UpdateLeadData"
   },
   "capture-data": {
     "component": "CaptureData"
   },
-  "obter-data": {
-    "component": "ObterData"
+  "list-all-leads": {
+    "component": "ListAllLeads"
   }
 }

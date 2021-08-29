@@ -29,7 +29,6 @@ const UpdateLeadData: StorefrontFunctionComponent = () => {
       }
     }
 
-
     console.log(email)
 
   }, [])
