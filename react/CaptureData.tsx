@@ -16,8 +16,8 @@ const CaptureData: StorefrontFunctionComponent = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     await api.post('/lead', {
+      id: email,
       name,
-      email,
       fone,
     })
 

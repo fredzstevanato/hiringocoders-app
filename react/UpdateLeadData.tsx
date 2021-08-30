@@ -3,36 +3,47 @@ import api from './service/api'
 
 interface LeadProps {
   name: string
-  email: string
+  ID: string
   type: string
   fone: string
 }
 
-interface Leads {
-  ID: string
-  lead: LeadProps[]
-}
-
 const UpdateLeadData: StorefrontFunctionComponent = () => {
   const [email, setEmail] = useState('');
-  //const [leads, setLeads] = useState<LeadProps[]>()
 
   useEffect(() => {
     async function getUrl() {
       const response = await api.get(`https://stevanato--hiringcoders202105.myvtex.com/api/vtexid/pub/authenticated/user`)
-
-      getUrl()
 
       if (response.data.user) {
         setEmail(response.data.user)
         return
       }
     }
-
+    getUrl()
     console.log(email)
+  }, [email])
 
-  }, [])
-  return <h1>{email ? { email } : 'Email não capturadado'}</h1>
+  useEffect(() => {
+    async function sendEmailAws(email: string) {
+      const headers = {
+        headers: {
+          'Content-Type': 'application/json',
+          'header1': email
+        }
+      }
+      await api.patch('/leads', headers)
+
+    }
+    sendEmailAws(email)
+  }, [email])
+
+
+  return (
+    <div>
+      <h1>{email || 'Email não capturadado ->'}</h1>
+    </div>
+  )
 }
 
 export default UpdateLeadData
