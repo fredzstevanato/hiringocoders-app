@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from './service/api'
+import { Layout, PageBlock } from 'vtex.styleguide'
 
 interface LeadProps {
   ID: string
@@ -19,22 +20,26 @@ const ListAllLeads: StorefrontFunctionComponent = () => {
     getLeads()
   }, [])
 
-
-
   return (
-    <div>
-      {leads?.map((item) => {
-        return (
-          <>
-            <h1 key={item.ID}>{item.ID}</h1>
-            <h2>Email: {item.ID}</h2>
-            <h2>{item.name}</h2>
-            <h2>{item.fone}</h2>
-            <h2>{item.type}</h2>
-          </>
-        )
-      })}
-    </div>
+    <Layout>
+      <PageBlock
+        title="List"
+        subtitle="Tesando"
+        variation="full"
+      >
+        {leads?.map((item) => {
+          return (
+            <>
+              <h1 key={item.ID}>{item.ID}</h1>
+              <h2>Email: {item.ID}</h2>
+              <h2>{item.name}</h2>
+              <h2>{item.fone}</h2>
+              <h2>{item.type}</h2>
+            </>
+          )
+        })}
+      </PageBlock>
+    </Layout>
   )
 }
 
